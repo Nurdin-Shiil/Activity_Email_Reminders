@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_crm_team_form_inherit_reminder" model="ir.ui.view">
+        <field name="name">crm.team.form.inherit.reminder</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='left']" position="inside">
+                <field name="receive_lead_upload_reminder" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="mail_template_activity_reminder_2_days" model="mail.template">
+            <field name="name">Activity Reminder: 2 Days Before Deadline</field>
+            <field name="model_id" ref="mail.model_mail_activity" />
+            <field name="subject">Reminder to review your activity: {{ object.res_name or '' }}</field>
+            <field name="email_to">{{ object.user_id.email or '' }}</field>
+            <field name="body_html" type="html">
+                <div> Dear <t t-out="object.user_id.name or ''" />, <br /><br /> I hope this email
+                    finds you well. Just a quick reminder that the task <t
+                        t-out="object.res_name or ''" /> is due in 2 days, on <t
+                        t-out="object.datetime_deadline or ''" />. <br /><br /> 🔹 Activity Details: <br /><br />
+                    Task: <t t-out="object.res_name or ''" /> <br /> Assigned To: <t
+                        t-out="object.user_id.partner_id.name or ''" /> <br /> Due Date: <t
+                        t-out="object.datetime_deadline or ''" /><br />
+                </div>
+                <br />
+                <div>
+                    <a t-attf-href="/odoo/{{ object.res_model }}/{{ object.res_id }}"
+                        style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px">
+                        View Activity
+                    </a>
+                </div>
+            </field>
+            <field name="auto_delete" eval="True" />
+        </record>
+
+        <record id="mail_template_activity_reminder_1_day" model="mail.template">
+            <field name="name">Activity Reminder: 1 Day Before Deadline</field>
+            <field name="model_id" ref="mail.model_mail_activity" />
+            <field name="subject">Reminder to review your activity: {{ object.res_name or '' }}</field>
+            <field name="email_to">{{ object.user_id.email or '' }}</field>
+            <field name="body_html" type="html">
+                <div> Dear <t t-out="object.user_id.name or ''" />, <br /><br /> I hope this email
+                    finds you well. Just a quick reminder that the task <t
+                        t-out="object.res_name or ''" /> is due tomorrow, on <t
+                        t-out="object.datetime_deadline or ''" />. <br /><br /> 🔹 Activity Details: <br /><br />
+                    Task: <t t-out="object.res_name or ''" /> <br /> Assigned To: <t
+                        t-out="object.user_id.partner_id.name or ''" /> <br /> Due Date: <t
+                        t-out="object.datetime_deadline or ''" /><br />
+                </div>
+                <br />
+                <div>
+                    <a t-attf-href="/odoo/{{ object.res_model }}/{{ object.res_id }}"
+                        style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px">
+                        View Activity
+                    </a>
+                </div>
+            </field>
+            <field name="auto_delete" eval="True" />
+        </record>
+
+        <!-- Email Template for Deadline Day (with Alertness) -->
+        <record id="mail_template_activity_reminder_due" model="mail.template">
+            <field name="name">Activity Reminder: Due Today</field>
+            <field name="model_id" ref="mail.model_mail_activity" />
+            <field name="subject">Urgent: Activity Due Today - {{ object.res_name or '' }}</field>
+            <field name="email_to">{{ object.user_id.email or '' }}</field>
+            <field name="body_html" type="html">
+                <div>
+                    <strong>Urgent Reminder!</strong><br /><br /> Dear <t
+                        t-out="object.user_id.name or ''" />, <br /><br /> This is an urgent
+                    reminder that the task <t t-out="object.res_name or ''" /> is <strong>due today</strong>,
+                    on <t t-out="object.datetime_deadline or ''" />. Please take immediate action to
+                    complete it. <br /><br /> 🔹 Activity Details: <br /><br /> Task: <t
+                        t-out="object.res_name or ''" /> <br /> Assigned To: <t
+                        t-out="object.user_id.partner_id.name or ''" /> <br /> Due Date: <t
+                        t-out="object.datetime_deadline or ''" /><br />
+                </div>
+                <br />
+                <div>
+                    <a t-attf-href="/odoo/{{ object.res_model }}/{{ object.res_id }}"
+                        style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px">
+                        View Activity
+                    </a>
+                </div>
+            </field>
+            <field name="auto_delete" eval="True" />
+        </record>
+
+        <!-- Email Template for 30 Minutes Before Deadline -->
+        <record id="mail_template_activity_reminder_30_minutes" model="mail.template">
+            <field name="name">Activity Reminder: 30 Minutes Before Deadline</field>
+            <field name="model_id" ref="mail.model_mail_activity" />
+            <field name="subject">Urgent: Activity Due in 30 Minutes - {{ object.res_name or '' }}</field>
+            <field name="email_to">{{ object.user_id.email or '' }}</field>
+            <field name="body_html" type="html">
+                <div>
+                    <strong>Urgent Reminder!</strong><br /><br /> Dear <t
+                        t-out="object.user_id.name or ''" />, <br /><br /> This is an urgent
+                    reminder that the task <t t-out="object.res_name or ''" /> is due in 30 minutes,
+                    on <t t-out="object.datetime_deadline or ''" />. Please take immediate action to
+                    complete it. <br /><br /> 🔹 Activity Details: <br /><br /> Task: <t
+                        t-out="object.res_name or ''" /> <br /> Assigned To: <t
+                        t-out="object.user_id.partner_id.name or ''" /> <br /> Due Date: <t
+                        t-out="object.datetime_deadline or ''" /><br />
+                </div>
+                <br />
+                <div>
+                    <a t-attf-href="/odoo/{{ object.res_model }}/{{ object.res_id }}"
+                        style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px">
+                        View Activity
+                    </a>
+                </div>
+            </field>
+
+        </record>
+
+
+        <!-- Email Template: Lead Upload Reminder -->
+        <record id="email_template_lead_upload_reminder" model="mail.template">
+            <field name="name">Lead Upload Reminder</field>
+            <field name="model_id" ref="sales_team.model_crm_team" />
+            <field name="subject">Reminder: Please Upload Your Leads - {{ object.name or '' }}</field>
+            <field name="email_to">{{ ','.join(object.member_ids.mapped('email')) }}</field>
+            <field name="body_html" type="html">
+                <div>
+                    <p>Hello <t t-out="object.name or ''" /> Team,</p>
+                    <p>This is a friendly reminder to upload your latest leads into the CRM.</p>
+                    <p>Please ensure all leads from this week are entered before the deadline.</p>
+                </div>
+                <br />
+                <div>
+                    <a t-attf-href="/web#model=crm.lead&amp;view_type=list"
+                        style="padding: 5px 10px; color: #FFFFFF; text-decoration: none;
+                               background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px">
+                        Upload Leads Now
+                    </a>
+                </div>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

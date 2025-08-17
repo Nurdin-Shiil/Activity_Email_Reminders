@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ir_cron_activity_reminder" model="ir.cron">
+            <field name="name">Send Activity Deadline Reminders</field>
+            <field name="model_id" ref="mail.model_mail_activity" />
+            <field name="state">code</field>
+            <field name="code">model._send_activity_reminders()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+
+        </record>
+        <record id="ir_cron_activity_reminder_30min" model="ir.cron">
+            <field name="name">Send Activity 30-Minute Reminders</field>
+            <field name="model_id" ref="mail.model_mail_activity" />
+            <field name="state">code</field>
+            <field name="code">model._send_30min_activity_reminders()</field>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+        </record>
+
+        <record id="ir_cron_lead_upload_reminder" model="ir.cron">
+            <field name="name">Send Lead Upload Reminders</field>
+            <field name="model_id" ref="sales_team.model_crm_team" />
+            <field name="state">code</field>
+            <field name="code">model.send_lead_upload_reminders()</field>
+            <field name="interval_number">7</field> <!-- Run every 7 days -->
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+    </data>
+</odoo>
